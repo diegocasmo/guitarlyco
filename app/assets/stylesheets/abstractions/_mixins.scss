@@ -1,0 +1,7 @@
+@mixin _inline-block {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom:1;
+  *display: inline;
+  _height: 15px;
+}
