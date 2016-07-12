@@ -5,3 +5,11 @@
   *display: inline;
   _height: 15px;
 }
+
+@mixin _transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
