@@ -1,0 +1,44 @@
+.header {
+  display: block;
+  max-width: 768px;
+  padding: 0px 15px;
+  margin: 0px auto;
+}
+
+.header-navigation {
+  margin: 30px auto 10px auto;
+  padding: 10px 0px;
+  border-top: 1px solid $gallery;
+  border-bottom: 1px solid $gallery;
+}
+
+.header-navigation__list {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.header-navigation__item {
+  @include _inline-block;
+  border-right: 1px solid $gallery;
+  padding: 0px 10px;
+  &:first-child {
+    padding: 0px 10px 0px 0px;
+  }
+  &:last-child {
+    border-right: 0px;
+    padding: 0px 0px 0px 10px;
+  }
+}
+
+.header-navigation__item-link {
+  font-family: $montserrat;
+  color: $tundora;
+  text-transform: uppercase;
+  font-weight: bold;
+  &:hover, &:active, &:focus {
+    @include _transition(background-color .1s, color .1s);
+    color: $fountain_blue;
+    text-decoration: none;
+  }
+}
