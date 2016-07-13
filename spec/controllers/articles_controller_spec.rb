@@ -14,4 +14,18 @@ RSpec.describe ArticlesController, type: :controller do
       expect(response).to render_template('index')
     end
   end
+
+  describe 'GET #show' do
+    it 'assigns @article using slug param' do
+      article = create(:article)
+      get :show, :article_slug => article.slug
+      expect(assigns(:article)).to eq(article)
+    end
+
+    it 'renders the show template' do
+      article = create(:article)
+      get :show, :article_slug => article.slug
+      expect(response).to render_template('show')
+    end
+  end
 end

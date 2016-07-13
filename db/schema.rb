@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160711221026) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      null: false
+    t.string   "slug",       null: false
     t.string   "video_link", null: false
     t.text     "body",       null: false
     t.datetime "created_at", null: false

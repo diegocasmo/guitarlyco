@@ -6,11 +6,12 @@
     %ul.article-index__list.row.row-centered
       - @articles.each do |article|
         %li.article-index__item.col-xs-12.col-centered
-          %h2.article-index__title= article.title
+          = link_to article.title, { controller: 'articles', action: 'show', article_slug: article.slug }, { class: 'article-index__title' }
           %div.article-index__meta
             %i.fa.fa-clock-o.article-index__created-at-icon{"aria-hidden" => "true"}
             %p.article-index__created-at= "Posted #{time_ago_in_words(article.created_at)} ago"
           %div.article-index__video-link-container
-            %iframe.article-index__video-link{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => article.video_link, :width => "560"}
+            %iframe.article-index__video-link{allowfullscreen: '', frameborder: '0', height: '315', src: article.video_link, width: '560'}
           %p.article-index__body= get_short_body(article.body)
+          = link_to 'See more...', { controller: 'articles', action: 'show', article_slug: article.slug }, { class: 'article-index__see-more-link' }
     = will_paginate @articles, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 1
