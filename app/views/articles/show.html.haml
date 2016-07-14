@@ -7,4 +7,22 @@
     %div.article-show__video-link-container
       %iframe.article-show__video-link{allowfullscreen: '', frameborder: '0', height: '315', src: article.video_link, width: '560'}
     %p.article-show__body= article.body
+    #disqus_thread
     = link_to 'Back', :back, { class: 'article-show__back-link' }
+
+:javascript
+  var disqus_config = function () {
+      this.page.url = "#{url_for(action: 'show', controller: 'articles', article_slug: article.slug, only_path: false)}";
+      this.page.identifier = "#{article.slug}";
+  };
+  (function() {
+      var d = document, s = d.createElement('script');
+
+      s.src = '//guitarlyco.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+  })();
+%noscript
+  Please enable JavaScript to view the
+  %a{:href => "https://disqus.com/?ref_noscript", :rel => "nofollow"} comments section powered by Disqus.
