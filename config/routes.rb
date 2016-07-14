@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :articles, only: [:index]
+  get '/articles', to: 'articles#index'
+  get '/articles/:article_slug', to: 'articles#show'
+
   root to: 'articles#index'
 end
