@@ -1,0 +1,54 @@
+.about {
+  max-width: 768px;
+  margin: 0px auto;
+  text-align: left;
+  padding: 0px;
+  list-style: none;
+}
+
+.about-content {
+  padding: 0px;
+}
+
+.about-content__title {
+  color: $tundora;
+  font-weight: bold;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $fountain_blue;
+}
+
+.about-content__body {
+  font-size: 18px;
+  margin: 10px 0px;
+  padding-bottom: 15px;
+}
+
+.about-content__site-name {
+  color: $tundora;
+  font-weight: bold;
+}
+
+.about-content__email-link {
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.about-content__back-link {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $tundora;
+  border: 2px solid $tundora;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  @include _border-radius(4px);
+  @include _inline-block;
+  &:hover, &:focus, &:active {
+    @include _transition(background-color .1s, color .1s);
+    background: $tundora;
+    color: white;
+    text-decoration: none;
+  }
+}
