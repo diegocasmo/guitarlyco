@@ -11,5 +11,9 @@
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
   %body
+
     = render 'shared/header'
+
     = yield
+
+    %script{:src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57893a47237d8f8e", :type => "text/javascript"}
