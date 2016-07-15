@@ -7,8 +7,8 @@
     %div.article-show__video-link-container
       %iframe.article-show__video-link{allowfullscreen: '', frameborder: '0', height: '315', src: article.video_link, width: '560'}
     %p.article-show__body= article.body
-    #disqus_thread
     = link_to 'Back', :back, { class: 'article-show__back-link' }
+    #disqus_thread
 
 :javascript
   var disqus_config = function () {
