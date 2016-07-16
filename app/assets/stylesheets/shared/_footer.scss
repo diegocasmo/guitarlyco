@@ -1,0 +1,49 @@
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: $fountain_blue;
+  height: $footer_height;
+  z-index: 9999;
+}
+
+.footer-list {
+  margin: 0px auto;
+  padding: 0px;
+  list-style: none;
+  min-width: 320px;
+  max-width: 768px;
+  background: $fountain_blue;
+  text-align: right;
+}
+
+.footer-item {
+  @include _inline-block;
+  height: $footer_height;
+  line-height: $footer_height;
+  font-size: 26px;
+  padding: 0px 15px 0px 0px;
+  // First child is the copyright label
+  &:first-child {
+    float: left;
+  }
+}
+
+.footer-item__link {
+  color: white;
+  &:hover, &:active, &:focus {
+    @include _transition(background-color .1s, color .1s);
+    color: $tundora;
+  }
+}
+
+.footer-item__copyright {
+  margin: 0px;
+  color: white;
+  font-size: 14px;
+  margin-left: 15px;
+  @include _breakpoint(laptop) {
+    margin-left: 0px;
+  }
+}

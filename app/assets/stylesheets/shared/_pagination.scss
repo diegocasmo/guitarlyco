@@ -8,6 +8,7 @@
 .pagination > li > a {
   color: $fountain_blue;
   &:hover, &:active, &:focus {
+    @include _transition(background-color .1s, color .1s);
     color: $fountain_blue;
   }
 }

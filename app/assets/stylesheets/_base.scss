@@ -5,6 +5,7 @@ html, body {
   height: 100%;
   min-width: 320px;
   min-height: 100%;
+  margin-bottom: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,4 +25,8 @@ p, a, button, span, input, li {
   float: none;
   text-align: left;
   margin-right: -4px;
+}
+
+.container {
+  margin-bottom: $footer_height;
 }
