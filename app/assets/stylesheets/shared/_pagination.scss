@@ -1,6 +1,6 @@
 .pagination {
   display: block;
-  max-width: 768px;
+  max-width: $app_max_width;
   margin: 0px auto 60px auto;
   padding: 0px;
 }
