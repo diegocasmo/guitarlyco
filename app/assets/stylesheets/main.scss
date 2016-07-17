@@ -1,6 +1,8 @@
 // Variables
+@import './variables/variables';
 @import './variables/colors';
 @import './variables/typography';
+@import './variables/breakpoint';
 
 // Abstractions
 @import './abstractions/mixins';
@@ -16,3 +18,4 @@
 // Shared
 @import './shared/pagination';
 @import './shared/header';
+@import './shared/footer';
