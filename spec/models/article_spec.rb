@@ -8,6 +8,7 @@ RSpec.describe Article, :type => :model do
 
   let (:required_attrs) {
     {
+      video: create(:video),
       title: Faker::Book.title,
       video_link: Faker::Internet.url,
       body: Faker::Lorem.paragraph

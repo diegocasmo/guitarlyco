@@ -1,6 +1,9 @@
 class Article < ActiveRecord::Base
+  # Relations
+  belongs_to :video
+
   # Validations
-  validates_presence_of :title, :video_link, :body
+  validates_presence_of :video, :title, :video_link, :body
 
   # Paginates a list of articles
   def self.get_paginated(page, per_page)
