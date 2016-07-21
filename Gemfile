@@ -5,6 +5,7 @@ gem 'pg'                     , '~> 0.18.4'
 gem 'sass-rails'             , '~> 5.0'
 gem 'will_paginate'          , '~> 3.1'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'yt'                     , '~> 0.25.5'
 
 group :development, :test do
   gem 'haml-rails'        , '~> 0.9.0'

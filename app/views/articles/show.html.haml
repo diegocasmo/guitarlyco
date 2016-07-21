@@ -1,19 +1,19 @@
 %div.row.article-show
   %div.col-xs-12.col-centered
-    %h1.article-show__title= article.title
+    %h1.article-show__title= @article.title
     %div.article-show__meta
       %i.fa.fa-clock-o.article-show__created-at-icon{"aria-hidden" => "true"}
-      %p.article-show__created-at= "Posted #{time_ago_in_words(article.created_at)} ago"
+      %p.article-show__created-at= "Posted #{time_ago_in_words(@article.created_at)} ago"
     %div.article-show__video-link-container
-      %iframe.article-show__video-link{allowfullscreen: '', frameborder: '0', height: '315', src: article.video_link, width: '560'}
-    %p.article-show__body= article.body
+      %iframe.article-show__video-link{allowfullscreen: '', frameborder: '0', height: '315', src: @article.video_link, width: '560'}
+    %p.article-show__body= @article.body
     = link_to 'Back', :back, { class: 'article-show__back-link' }
     #disqus_thread
 
 :javascript
   var disqus_config = function () {
-      this.page.url = "#{url_for(action: 'show', controller: 'articles', article_slug: article.slug, only_path: false)}";
-      this.page.identifier = "#{article.slug}";
+      this.page.url = "#{url_for(action: 'show', controller: 'articles', article_id: @article.id, only_path: false)}";
+      this.page.identifier = "#{@article.id}";
   };
   (function() {
       var d = document, s = d.createElement('script');

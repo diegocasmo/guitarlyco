@@ -8,6 +8,7 @@ RSpec.describe Article, :type => :model do
 
   let (:required_attrs) {
     {
+      video: create(:video),
       title: Faker::Book.title,
       video_link: Faker::Internet.url,
       body: Faker::Lorem.paragraph
@@ -27,33 +28,20 @@ RSpec.describe Article, :type => :model do
         expect(article.valid?).to eq(false)
       end
     end
-
-    it 'does not create more than 1 Article with the same title' do
-      article_1 = create(:article, title: 'Diego Castillo')
-      expect { create(:article, title: article_1.title) }.to raise_error(ActiveRecord::RecordInvalid)
-    end
   end
 
   describe '#get_paginated' do
 
     it 'returns an array of paginated articles with default args' do
       (1..20).each { create(:article) }
-      expect(Article.get_paginated(nil, nil).length).to eq(7)
+      expect(Article.get_paginated(nil, nil).size).to eq(7)
     end
 
     it 'returns an array of paginated articles if custom args are passed to it' do
       (1..20).each { create(:article) }
       page = 1
       per_page = 3
-      expect(Article.get_paginated(page, per_page).length).to eq(3)
-    end
-  end
-
-  describe '#add_article_slug' do
-
-    it 'should add a parameterized title as slug to the article' do
-      article = create(:article, title: 'Diego Castillo')
-      expect(article.slug).to eq('diego-castillo')
+      expect(Article.get_paginated(page, per_page).size).to eq(3)
     end
   end
 end

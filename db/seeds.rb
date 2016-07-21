@@ -5,22 +5,23 @@
   'UCiReSwhx7y_LpNFNg4GCuCQ',
   'UCs9Mm7ILC1_e2SL3PbPRLsA',
   'UCOHb5NwT1yHkZOTTLuU3UXQ'
-].each do |youtube_id|
+].each do |youtube_channel_code|
   Channel.create({
-    youtube_id: youtube_id
+    youtube_channel_code: youtube_channel_code
   })
 end
 
-# Create some Article
-(1..100).each do
-  title = Faker::Book.title
-  # 'title' must be unique across 'Article'
-  until Article.find_by_title(title).blank?
-   title = Faker::Book.title
+# Get first 5 videos of the channels above and create a video
+# for each of them
+Channel.all.each do |channel|
+  yt_channel = Yt::Channel.new(url: "https://www.youtube.com/channel/#{channel.youtube_channel_code}")
+  yt_channel.videos.first(5).each do |yt_video|
+    Video.create({
+      channel: channel,
+      youtube_video_code: yt_video.id,
+      description: yt_video.description,
+      title: yt_video.title,
+      thumbnail_url: yt_video.thumbnail_url
+    })
   end
-  Article.create({
-    title: title,
-    video_link: 'https://www.youtube.com/embed/2orBJTZQNvw',
-    body: Faker::Lorem.paragraphs(10).join(' ')
-  })
 end

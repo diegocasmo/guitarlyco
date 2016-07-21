@@ -11,24 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160719135405) do
+ActiveRecord::Schema.define(version: 20160721185749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
+    t.integer  "video_id"
     t.string   "title",      null: false
-    t.string   "slug",       null: false
     t.string   "video_link", null: false
     t.text     "body",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "articles", ["video_id"], name: "index_articles_on_video_id", using: :btree
+
   create_table "channels", force: :cascade do |t|
-    t.string   "youtube_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "youtube_channel_code", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.integer  "channel_id"
+    t.string   "youtube_video_code", null: false
+    t.string   "description",        null: false
+    t.string   "title",              null: false
+    t.string   "thumbnail_url",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "videos", ["channel_id"], name: "index_videos_on_channel_id", using: :btree
+
+  add_foreign_key "articles", "videos"
+  add_foreign_key "videos", "channels"
 end

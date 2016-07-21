@@ -18,11 +18,11 @@ RSpec.describe 'Routes', :type => :routing do
       )
     end
 
-    it 'routes "/articles/:article_slug" GET to articles #show' do
-      expect(get('/articles/some-slug')).to route_to(
+    it 'routes "/articles/:id" GET to articles #show' do
+      expect(get('/articles/2')).to route_to(
         controller: 'articles',
         action: 'show',
-        article_slug: 'some-slug'
+        id: '2'
       )
     end
   end
