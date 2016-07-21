@@ -5,9 +5,9 @@
   'UCiReSwhx7y_LpNFNg4GCuCQ',
   'UCs9Mm7ILC1_e2SL3PbPRLsA',
   'UCOHb5NwT1yHkZOTTLuU3UXQ'
-].each do |youtube_id|
+].each do |youtube_channel_code|
   Channel.create({
-    youtube_id: youtube_id
+    youtube_channel_code: youtube_channel_code
   })
 end
 

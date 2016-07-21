@@ -7,13 +7,13 @@ RSpec.describe Channel, type: :model do
   end
 
   let (:required_attrs) {
-    youtube_id = Faker::Code.asin
-    # 'youtube_id' must be unique across 'Channel'
-    until Channel.find_by_youtube_id(youtube_id).blank?
-     youtube_id = Faker::Code.asin
+    youtube_channel_code = Faker::Code.asin
+    # 'youtube_channel_code' must be unique across 'Channel'
+    until Channel.find_by_youtube_channel_code(youtube_channel_code).blank?
+     youtube_channel_code = Faker::Code.asin
     end
     {
-      youtube_id: youtube_id
+      youtube_channel_code: youtube_channel_code
     }
   }
 
@@ -31,9 +31,9 @@ RSpec.describe Channel, type: :model do
       end
     end
 
-    it 'does not create more than 1 Channel with the same "youtube_id"' do
-      channel_1 = create(:channel, youtube_id: 'ABC123')
-      expect { create(:channel, youtube_id: channel_1.youtube_id) }.to raise_error(ActiveRecord::RecordInvalid)
+    it 'does not create more than 1 Channel with the same "youtube_channel_code"' do
+      channel_1 = create(:channel, youtube_channel_code: 'ABC123')
+      expect { create(:channel, youtube_channel_code: channel_1.youtube_channel_code) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

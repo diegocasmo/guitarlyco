@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20160721182818) do
   end
 
   create_table "channels", force: :cascade do |t|
-    t.string   "youtube_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "youtube_channel_code", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "videos", force: :cascade do |t|
