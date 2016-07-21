@@ -11,4 +11,17 @@
   })
 end
 
-# TODO: Use YT API to read some videos from the channels above
+# Get first 5 videos of the channels above and create a video
+# for each of them
+Channel.all.each do |channel|
+  yt_channel = Yt::Channel.new(url: "https://www.youtube.com/channel/#{channel.youtube_channel_code}")
+  yt_channel.videos.first(5).each do |yt_video|
+    Video.create({
+      channel: channel,
+      youtube_video_code: yt_video.id,
+      description: yt_video.description,
+      title: yt_video.title,
+      thumbnail_url: yt_video.thumbnail_url
+    })
+  end
+end

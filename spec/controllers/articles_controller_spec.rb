@@ -4,9 +4,9 @@ RSpec.describe ArticlesController, type: :controller do
 
   describe 'GET #index' do
     it 'assigns @articles using pagination params' do
-      articles = (1..10).map { create(:article) }
+      (1..10).each { create(:article) }
       get :index, :page => 1, :per_page => 2
-      expect(assigns(:articles)).to eq(articles[0..1])
+      expect(assigns(:articles)).to eq(Article.first(2))
     end
 
    it 'renders the index template' do

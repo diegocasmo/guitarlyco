@@ -35,4 +35,23 @@ RSpec.describe Video, type: :model do
       end
     end
   end
+
+  describe 'callbacks' do
+
+    describe '#create_video_article' do
+
+      it 'should call "#create_video_article" after a video is created' do
+        video = Video.new(required_attrs)
+        allow(video).to receive(:create_video_article)
+        video.save()
+        expect(video).to have_received(:create_video_article)
+      end
+
+      it 'should create a video with the article attrs' do
+        video = create(:video)
+        expect(video.article.title).to eq(video.title)
+        expect(video.article.body).to eq(video.description)
+      end
+    end
+  end
 end
