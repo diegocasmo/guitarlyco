@@ -16,15 +16,15 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   describe 'GET #show' do
-    it 'assigns @article using slug param' do
+    it 'assigns @article using id param' do
       article = create(:article)
-      get :show, :article_slug => article.slug
+      get :show, :id => article.id
       expect(assigns(:article)).to eq(article)
     end
 
     it 'renders the show template' do
       article = create(:article)
-      get :show, :article_slug => article.slug
+      get :show, :id => article.id
       expect(response).to render_template('show')
     end
   end

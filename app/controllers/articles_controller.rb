@@ -7,9 +7,8 @@ class ArticlesController < ApplicationController
     @articles = Article.get_paginated(page, per_page)
   end
 
-  # GET /articles/:article_slug
+  # GET /articles/:id
   def show
-    @article = Article.find_by_slug(params[:article_slug])
-    render template: 'articles/show', locals: { article: @article }
+    @article = Article.find(params[:id])
   end
 end

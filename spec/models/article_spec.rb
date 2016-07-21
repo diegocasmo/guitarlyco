@@ -27,11 +27,6 @@ RSpec.describe Article, :type => :model do
         expect(article.valid?).to eq(false)
       end
     end
-
-    it 'does not create more than 1 Article with the same title' do
-      article_1 = create(:article, title: 'Diego Castillo')
-      expect { create(:article, title: article_1.title) }.to raise_error(ActiveRecord::RecordInvalid)
-    end
   end
 
   describe '#get_paginated' do
@@ -46,14 +41,6 @@ RSpec.describe Article, :type => :model do
       page = 1
       per_page = 3
       expect(Article.get_paginated(page, per_page).length).to eq(3)
-    end
-  end
-
-  describe '#add_article_slug' do
-
-    it 'should add a parameterized title as slug to the article' do
-      article = create(:article, title: 'Diego Castillo')
-      expect(article.slug).to eq('diego-castillo')
     end
   end
 end
